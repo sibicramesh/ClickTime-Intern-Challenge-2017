@@ -1,0 +1,57 @@
+.right{
+    float: right;
+overflow: scroll;
+    height: 80%;
+    width: 45%;
+    margin-right: 10px;
+    margin-top: 16px;
+    border-style: solid;
+    border-color: darkorange;
+}
+.left{
+    margin-left: 10px;
+height: auto;
+    width: auto;
+margin-top: 16px;
+    float: left;
+    color: black;
+}
+.shops{
+    margin-right: 200px;
+    float: right;
+}
+.mode{
+margin-left: 200px;
+}
+.buttons{
+    text-align: center;
+}
+.text{
+    font-size: large;
+}
+.b1{
+    background-color: darkorange;
+    border: none;
+    color: black;
+    font-family: "Comic Sans MS";
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.c1{
+    border-style: solid;
+    border-color: darkorange;
+    font-size:15pt;
+    height:32px;
+    width:300px;
+}
+.main {
+    color: darkorange;
+    background-image: url("backgfinal.jpg");
+    background-size: 100% 150%;
+font-family: "Comic Sans MS";
+}

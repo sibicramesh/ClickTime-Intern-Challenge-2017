@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="main">
+<head>
+    <meta charset="UTF-8">
+    <title>maps</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvG1scpDSBFT7Is9pS3w_JeWqcCHUgFT8"></script>
+    <script src="app.js"></script>
+    <link type="text/css" rel="stylesheet" href="css_index.css">
+    <style>
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body ng-app="mapsapp" >
+
+<div ng-controller="mapsctrl" style="height:100%; width:100%;">
+
+    <div class="buttons">
+        <h1>ClickTime Intern Challenge 2017</h1>
+        <h3>Need a break? Enter the location below (by default the travel mode is set to walking )</h3>
+    <input type="text" ng-model="text1" id="middle" class="c1">
+    <input type="submit" value="Search" ng-click="dir()" class="b1">
+    <input type="submit" value="Reset Fields" ng-click="reload()" class="b1"><br>
+    </div>
+    <div class="shops">
+<h3>Select any one to see nearby shops</h3>
+    <input type="radio" name="shops" value="1" ng-click="coffeeshops()"> Coffee<br>
+    <input type="radio" name="shops" value="2" ng-click="donutshops()"> Donuts<br>
+    </div>
+    <div class="mode">
+    <h3>Select your travel mode</h3>
+    <input type="radio" name="method" value="WALKING" id="walk" ng-click="walking()"> Walking<br>
+    <input type="radio" name="method" value="BICYCLING" id="cycle" ng-click="cycling()"> Cycling<br>
+    <input type="radio" name="method" value="TRANSIT" id="bus" ng-click="transit()"> Transit(only supports two locations)<br>
+    </div>
+
+
+    <div class="left" id="map" style="height:80%; width:49.5%;">
+
+    </div>
+
+    <ol id="directions" class="right">
+        <div class="text">Directions</div>
+    </ol>
+
+</div>
+
+</body>
+
+</html>
