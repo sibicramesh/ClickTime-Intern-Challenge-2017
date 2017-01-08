@@ -10,16 +10,16 @@ var location2={};
     $scope.lat = [];
     $scope.lng = [];
     $scope.name = [];
-    $scope.initialize = function () {
-        navigator.geolocation.getCurrentPosition(function (location) {
+    $scope.initialize = function () {           //Initializing map with directions
+        navigator.geolocation.getCurrentPosition(function (location) {          //Current location method (geolocation)
             map = new google.maps.Map(document.getElementById('map'), {
                 center: new google.maps.LatLng(37.785636, -122.397119),
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 zoom: 9
             });
 
-            location2 = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
-            location1 = new google.maps.LatLng(37.785636, -122.397119);
+            location2 = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)            //Using Users current coordinates
+            location1 = new google.maps.LatLng(37.785636, -122.397119);         //ClickTime office coordinates
             var directionsService = new google.maps.DirectionsService();
 
             directionsDisplay = new google.maps.DirectionsRenderer();
@@ -33,12 +33,12 @@ var location2={};
             };
             directionsService.route(request, function (response, status) {
                 if (status == 'OK') {
-                    directionsDisplay.setDirections(response);
+                    directionsDisplay.setDirections(response);          //Directions in map
                     $scope.textdir = response.routes[0].legs[0];
                     //console.log($scope.textdir)
                     for (i = 0; i < $scope.textdir.steps.length; i++) {
 
-                        $("#directions").append("<li>" + $scope.textdir.steps[i].instructions + "</li>");
+                        $("#directions").append("<li>" + $scope.textdir.steps[i].instructions + "</li>");       //Directions in words
                     }
 
                 }
@@ -48,7 +48,7 @@ var location2={};
         });
     }
     $scope.initialize();
-    $scope.walking = function () {
+    $scope.walking = function () {          //Walking mode function
         var checkboxArray = document.getElementById('middle').value;
         //console.log(checkboxArray)
         if (checkboxArray||checkboxArray.value!=null ) {
@@ -97,7 +97,7 @@ console.log('a')
 
         }
     }
-    $scope.cycling = function () {
+    $scope.cycling = function () {          //Cycle mode function
         var checkboxArray = document.getElementById('middle').value;
         //console.log(checkboxArray)
         if (checkboxArray||checkboxArray.value!=null ) {
@@ -146,7 +146,7 @@ console.log('a')
 
         }
     }
-    $scope.transit = function () {
+    $scope.transit = function () {          //Transit mode function
         var checkboxArray = document.getElementById('middle').value;
         //console.log(checkboxArray)
         if (checkboxArray||checkboxArray.value!=null ) {
@@ -195,7 +195,7 @@ console.log('a')
 
     }
 
-$scope.coffeeshops=function () {
+$scope.coffeeshops=function () {            //Nearby coffee shops function
 
         navigator.geolocation.getCurrentPosition(function (location) {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -235,7 +235,7 @@ $scope.coffeeshops=function () {
     }
 
 
-    $scope.donutshops=function () {
+    $scope.donutshops=function () {             //Nearby donut shops function
 
         navigator.geolocation.getCurrentPosition(function (location) {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -243,9 +243,9 @@ $scope.coffeeshops=function () {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 zoom: 10
             });
-            var coffee = $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+            var donut = $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
                 "location=" + location.coords.latitude + "," + location.coords.longitude + "&radius=50000&keyword=donut&key=AIzaSyAsM05Ht2GXfjRyiYNnamdYZyhW3_M_dZk")
-            coffee.success(function (data) {
+            donut.success(function (data) {
                 for (var i = 0; i < data.results.length; i++) {
                     $scope.lat = data.results[i].geometry.location.lat;
                     $scope.lng = data.results[i].geometry.location.lng;
@@ -274,7 +274,7 @@ $scope.coffeeshops=function () {
 
     }
 
-$scope.dir=function () {
+$scope.dir=function () {            //Adding third location (waypoint)
     navigator.geolocation.getCurrentPosition(function (location) {
         map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(37.785636, -122.397119),
@@ -371,7 +371,7 @@ var type1=document.getElementById("walk");
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
-            });}else{
+            });}else{           //default is WALKING
             directionsService.route({
                 origin: location2,
                 destination: location1,
@@ -396,7 +396,7 @@ var type1=document.getElementById("walk");
         }
     });
 }
-$scope.reload=function () {
+$scope.reload=function () {         //Reset function
     location.reload();
 }
 
